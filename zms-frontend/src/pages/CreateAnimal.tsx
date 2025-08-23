@@ -24,6 +24,22 @@ const CreateAnimal = () => {
     const handleSubmit =async(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
         // console.log(animal);
+        const speciescheck=animal.species.trim();
+        if(speciescheck.length===0){
+            alert("Please fill all the fields");
+            return;
+        }
+        const ageNum=Number(animal.age);
+        if(ageNum<0 || ageNum>200 || isNaN(ageNum) || !Number.isInteger(ageNum)){
+            alert("Enter valid age(1-200)");
+            return;
+        }
+        const weightNum=Number(animal.weight);
+        if(weightNum<0 || weightNum>10000 || isNaN(weightNum)){
+            alert("Enter valid weight(1-10000)");
+            return;
+        }
+
         if(!animal.species.length || !animal.age.length || !animal.weight.length){
             alert("Please fill all the fields");
             return;
@@ -101,6 +117,7 @@ const CreateAnimal = () => {
                         onChange={e => setAnimal({ ...animal, age: e.target.value })}
                         className="px-4 py-2 rounded-lg border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
                         min="0"
+                        max="200"
                         required
                     />
                 </div>
@@ -115,6 +132,7 @@ const CreateAnimal = () => {
                         onChange={e => setAnimal({ ...animal, weight: e.target.value })}
                         className="px-4 py-2 rounded-lg border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
                         min="0"
+                        max="10000"
                         step="any"
                         required
                     />
