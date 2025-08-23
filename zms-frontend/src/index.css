@@ -1,3 +1,4 @@
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -48,6 +49,76 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+
+
+  /* Project initial setup */
+
+
+
+  /* Primary Colors - Forest Green Theme */
+  --primary-color: hsl(140 60% 25%);
+  /* Deep forest green */
+  --primary-foreground: hsl(0 0% 98%);
+  /* Off-white text */
+
+  /* Secondary Colors */
+  --secondary-color: hsl(120 25% 90%);
+  /* Light mint green */
+  --secondary-foreground: hsl(140 30% 20%);
+  /* Dark green text */
+
+  /* Accent Colors - Sunset Orange */
+  --accent-color: hsl(35 80% 55%);
+  /* Warm orange */
+  --accent-foreground: hsl(0 0% 98%);
+  /* White text */
+
+  /* Feedback / Utility Colors */
+  --success-color: hsl(145 50% 35%);
+  /* Vibrant green */
+  --success-foreground: hsl(0 0% 98%);
+
+  --warning-color: hsl(45 95% 50%);
+  /* Bright amber yellow */
+  --warning-foreground: hsl(30 20% 15%);
+  /* Dark brown text */
+
+  --danger-color: hsl(5 70% 50%);
+  /* Rich red */
+  --danger-foreground: hsl(0 0% 98%);
+
+  --info-color: hsl(200 85% 45%);
+  /* Calm blue */
+  --info-foreground: hsl(0 0% 98%);
+
+  /* Background Colors */
+  --background: hsl(45 20% 97%);
+  /* Warm white */
+  --foreground: hsl(140 15% 12%);
+  /* Dark green-black */
+  --card: hsl(0 0% 100%);
+  /* Pure white */
+  --card-foreground: hsl(140 15% 12%);
+  /* Dark text */
+
+  /* Utility Colors */
+  --muted: hsl(120 15% 95%);
+  /* Very light green */
+  --muted-foreground: hsl(140 8% 45%);
+  /* Medium gray-green */
+  --border: hsl(120 20% 88%);
+  /* Light green border */
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg, hsl(140 60% 25%) 0%, hsl(120 40% 35%) 50%, hsl(100 45% 40%) 100%);
+  --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(120 25% 97%) 100%);
+  --gradient-accent: linear-gradient(135deg, hsl(35 80% 55%) 0%, hsl(25 70% 50%) 100%);
+
+  /* Shadows */
+  --shadow-nature: 0 10px 30px -10px hsl(140 60% 25% / 0.2);
+  --shadow-card: 0 4px 20px -4px hsl(140 30% 20% / 0.1);
+  --shadow-glow: 0 0 40px hsl(35 80% 55% / 0.3);
 }
 
 a {
@@ -176,4 +247,20 @@ button:focus-visible {
 
 h1 {
   color: black;
+}
+
+/* Animation used for 404 error page */
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.7s cubic-bezier(0.4, 0, 0.2, 1) 1;
 }
