@@ -5,7 +5,9 @@ import Signin from "./pages/Signin";
 import AdminPortal from "./pages/AdminPortal";
 import NotFound from "./pages/NotFound";
 import CreateAnimal from "./pages/CreateAnimal";
+import AnimalDashboard from "./pages/AnimalDashboard";
 // import Home from "./pages/";
+
 
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
       <Route path="/signin" element={<Signin />} />
       <Route path="/portal/admin" element={<AdminPortal />} />
       <Route path="/create/animal" element={<CreateAnimal />} />
+      <Route  path="/dashboard/animals" element={<AnimalDashboard />} />
       {/* /map */}
       <Route path="*" element={<NotFound />} />
     </Routes>

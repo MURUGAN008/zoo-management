@@ -75,7 +75,7 @@ const CreateAnimal = () => {
         <div className="w-full flex items-center justify-center bg-[var(--background)] py-8">
             <form
                 onSubmit={handleSubmit}
-                className="w-full max-w-2xl bg-[var(--card)] border-2 border-[var(--border)] rounded-2xl shadow-lg p-12 flex flex-col gap-8 animate-slide-down mx-auto"
+                className="w-8/10 max-w-2xl bg-[var(--card)] border-2 border-[var(--border)] rounded-2xl shadow-lg p-12 flex flex-col gap-8 animate-slide-down mx-auto"
             >
                 <h2 className="text-3xl font-extrabold text-center mb-2 text-[var(--primary-color)]">Create Animal</h2>
                 <div className="flex flex-col gap-1">
