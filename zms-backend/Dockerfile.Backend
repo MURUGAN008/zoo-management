@@ -1,0 +1,19 @@
+FROM oven/bun:1.2.2-alpine
+
+WORKDIR /app
+
+COPY ./zms-backend/package.json ./
+COPY ./zms-backend/package-lock.json ./
+COPY ./zms-backend/tsconfig.json ./
+
+COPY ./zms-backend/bun.lock ./
+
+RUN bun install
+COPY ./zms-backend .
+RUN bunx prisma generate
+RUN bun run db:seed:admins
+RUN bun run db:seed:animals
+
+
+
+CMD ["bun", "index.ts"]

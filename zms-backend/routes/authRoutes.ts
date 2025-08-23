@@ -1,9 +1,11 @@
 import express from "express";
-import { login, register } from "../controllers/auth.controller";
+import { login, registerWithInvitation } from "../controllers/auth.controller";
 
 const authRoutes = express.Router();
 
-authRoutes.post("/register", register);
+// Invitation-based registration
+authRoutes.post("/register-with-invitation", registerWithInvitation);
+
 authRoutes.post("/login", login);
 
 export default authRoutes;

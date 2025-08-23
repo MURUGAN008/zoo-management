@@ -1,12 +1,13 @@
 import express from "express";
-import { createTicket, getTickets, getTicketById, updateTicket, deleteTicket } from "../controllers/ticket.controller";
-import { adminMiddleware } from "../middleware/authMiddleware";
+import { createTicket, getTicketStats, getTicketById } from "../controllers/ticket.controller";
+import { authMiddleware } from "../middleware/authMiddleware";
 const ticketRoutes = express.Router();
 
+// Public endpoints - anyone can book tickets and view specific tickets
 ticketRoutes.post("/create", createTicket);
-ticketRoutes.get("/get", adminMiddleware, getTickets);
 ticketRoutes.get("/get/:id", getTicketById);
-ticketRoutes.put("/update/:id", updateTicket);
-ticketRoutes.delete("/delete/:id", deleteTicket);
+
+// Admin-only endpoints
+ticketRoutes.get("/stats", authMiddleware, getTicketStats); // Statistics endpoint for admins
 
 export default ticketRoutes;

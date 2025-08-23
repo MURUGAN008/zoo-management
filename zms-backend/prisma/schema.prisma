@@ -11,7 +11,6 @@ generator client {
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
 }
 
 model Admin {
@@ -21,7 +20,10 @@ model Admin {
   password  String
   role      Role     @default(ADMIN)
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @updatedAt @default(now())
+  
+  // Relations
+  sentInvitations Invitation[]
 }
 
 model Animal {
@@ -32,7 +34,7 @@ model Animal {
   age       Int
   weight    Float
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @updatedAt @default(now())
 }
 
 model Ticket {
@@ -44,15 +46,28 @@ model Ticket {
   userType    UserType
   passStatus  PassStatus
   createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  updatedAt   DateTime   @updatedAt @default(now())
+}
+
+model Invitation {
+  id          String           @id @default(uuid())
+  email       String           @unique
+  token       String           @unique
+  invitedBy   String
+  role        Role             @default(ADMIN)
+  expiresAt   DateTime
+  status      InvitationStatus @default(PENDING)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt @default(now())
+  
+  // Relations
+  inviter     Admin            @relation(fields: [invitedBy], references: [id])
 }
 
 enum Role {
   ADMIN
   STAFF
-  USER
 }
-
 
 enum PassType {
   ONE_TIME
@@ -68,4 +83,10 @@ enum UserType {
 enum PassStatus {
   NORMAL
   VIP
+}
+
+enum InvitationStatus {
+  PENDING
+  ACCEPTED
+  EXPIRED
 }
